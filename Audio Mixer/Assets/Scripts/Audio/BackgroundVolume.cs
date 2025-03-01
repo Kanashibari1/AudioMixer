@@ -1,7 +1,4 @@
-public class BackgroundVolume : VolumeHandler<BackgroundVolume>
+public class BackgroundVolume : VolumeHandler
 {
-    public void ChangeVolume(float volume)
-    {
-        ChangeVolume(volume, "Background");
-    }
+    protected override string ParameterName => "Background";
 }

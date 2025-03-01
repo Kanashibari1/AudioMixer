@@ -1,12 +1,30 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class VolumeHandler<T> : MonoBehaviour
+[RequireComponent(typeof(Slider))]
+public abstract class VolumeHandler : MonoBehaviour
 {
+    private const float Coefficient = 20f;
+
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
 
-    public void ChangeVolume(float volume, string parameterName)
+    private Slider _slider;
+
+    protected abstract string ParameterName { get; }
+
+    private void Awake()
     {
-        _audioMixerGroup.audioMixer.SetFloat(parameterName, Mathf.Log10(volume) * 20);
+        _slider = GetComponent<Slider>();
+    }
+
+    private void Start()
+    {
+        _slider.onValueChanged.AddListener(ChangeVolume);
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        _audioMixerGroup.audioMixer.SetFloat(ParameterName, Mathf.Log10(volume) * Coefficient);
     }
 }

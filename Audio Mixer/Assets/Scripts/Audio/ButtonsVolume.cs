@@ -1,7 +1,4 @@
-public class ButtonsVolume : VolumeHandler<ButtonsVolume>
+public class ButtonsVolume : VolumeHandler
 {
-    public void ChangeVolume(float volume)
-    {
-        ChangeVolume(volume, "VolumeButtons");
-    }
+    protected override string ParameterName => "VolumeButtons";
 }

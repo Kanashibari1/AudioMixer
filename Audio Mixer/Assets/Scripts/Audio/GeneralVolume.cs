@@ -1,7 +1,4 @@
-public class GeneralVolume : VolumeHandler<GeneralVolume>
+public class GeneralVolume : VolumeHandler
 {
-    public void ChangeVolume(float volume)
-    {
-        ChangeVolume(volume, "General");
-    }
+    protected override string ParameterName => "General";
 }
