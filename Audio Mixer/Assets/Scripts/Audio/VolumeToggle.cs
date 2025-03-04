@@ -19,9 +19,14 @@ public class VolumeToggle : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _button.onClick.AddListener(Toggle);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(Toggle);
     }
 
     private void Toggle()

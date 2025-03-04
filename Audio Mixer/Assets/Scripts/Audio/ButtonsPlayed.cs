@@ -14,9 +14,14 @@ public class ButtonsPlayed : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _button.onClick.AddListener(Play);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(Play);
     }
 
     public void Play()
